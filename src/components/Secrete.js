@@ -19,7 +19,7 @@ const Secrete = () => {
 
     useEffect((e) => {
         const fetch = async () => {
-            await axios.get('https://photo-gallerly-backend.onrender.com/api/getimage')
+            await axios.get('https://photogallery-backend.onrender.com/api/getimage')
                 .then((res) => {
                     setUploadedFile(res.data.data)
                 })
@@ -29,7 +29,7 @@ const Secrete = () => {
 
 
     const multipleDelete = async () => {
-        await axios.post(`https://photo-gallerly-backend.onrender.com/delete`, deleteItem)
+        await axios.post(`https://photogallery-backend.onrender.com/delete`, deleteItem)
             .then((res) => {
                 console.log(res)
             })
@@ -87,7 +87,7 @@ const Secrete = () => {
 
     }
     const handlePhotoUpload = (e) => {
-        const url = 'https://photo-gallerly-backend.onrender.com/api/image'
+        const url = 'https://photogallery-backend.onrender.com/api/image'
         const formData = new FormData();
         formData.append('image', imgUpload)
         try {

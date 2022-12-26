@@ -31,7 +31,7 @@ function Login() {
         }
         try {
             const { data } = await axios.post(
-                "https://photo-gallerly-backend.onrender.com/login",
+                "https://photogallery-backend.onrender.com/login",
                 {
                     ...input,
                 },

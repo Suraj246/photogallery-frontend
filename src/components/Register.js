@@ -33,7 +33,7 @@ function Register() {
         }
         try {
             const { data } = await axios.post(
-                "https://photo-gallerly-backend.onrender.com/register",
+                "https://photogallery-backend.onrender.com/register",
                 {
                     ...input,
                 },
