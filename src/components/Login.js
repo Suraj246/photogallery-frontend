@@ -26,6 +26,10 @@ function Login() {
         });
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (!input.email || !input.password) {
+            toast.error("Please enter a valid email or password")
+            return
+        }
         try {
             const { data } = await axios.post(
                 "https://photo-gallerly-backend.onrender.com/login",

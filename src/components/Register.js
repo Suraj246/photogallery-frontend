@@ -28,7 +28,8 @@ function Register() {
         const { firstName, lastName, email, password, phoneNumber } = input
 
         if (!firstName || !lastName || !email || !password || !phoneNumber) {
-            alert('Please enter field')
+            toast.error("Please enter a valid email or password")
+            return
         }
         try {
             const { data } = await axios.post(
