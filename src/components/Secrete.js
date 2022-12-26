@@ -17,7 +17,7 @@ const Secrete = () => {
     // console.log(imgUpload)
     useEffect((e) => {
         const fetch = async () => {
-            await axios.get('http://localhost:4000/api/getimage')
+            await axios.get('https://photo-gallerly-backend.onrender.com/api/getimage')
                 .then((res) => {
                     setUploadedFile(res.data.data)
                 })
@@ -27,7 +27,7 @@ const Secrete = () => {
 
 
     const multipleDelete = async () => {
-        await axios.post(`http://localhost:4000/delete`, deleteItem)
+        await axios.post(`https://photo-gallerly-backend.onrender.com/delete`, deleteItem)
             .then((res) => {
                 console.log(res)
             })
@@ -45,7 +45,7 @@ const Secrete = () => {
             navigate("/signin");
         } else {
             const { data } = await axios.post(
-                "http://localhost:4000",
+                "https://photo-gallerly-backend.onrender.com",
                 {},
                 {
                     withCredentials: true,
@@ -78,7 +78,7 @@ const Secrete = () => {
 
     }
     const handlePhotoUpload = (e) => {
-        const url = 'http://localhost:4000/api/image'
+        const url = 'https://photo-gallerly-backend.onrender.com/api/image'
         const formData = new FormData();
         formData.append('image', imgUpload)
         try {

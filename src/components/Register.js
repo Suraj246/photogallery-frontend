@@ -32,7 +32,7 @@ function Register() {
         }
         try {
             const { data } = await axios.post(
-                "http://localhost:4000/register",
+                "https://photo-gallerly-backend.onrender.com/register",
                 {
                     ...input,
                 },
