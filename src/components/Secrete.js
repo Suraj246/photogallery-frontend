@@ -45,7 +45,7 @@ const Secrete = () => {
             navigate("/signin");
         } else {
             const { data } = await axios.post(
-                "https://photo-gallerly-backend.onrender.com",
+                "https://photo-gallerly-backend.onrender.com/",
                 {},
                 {
                     withCredentials: true,
@@ -58,10 +58,10 @@ const Secrete = () => {
             else {
                 setUser(data)
 
-                toast.d(`Welcome Back ${data.user} 🦄`, {
-                    toastId: 'success1',
-                }
-                );
+                // toast.d(`Welcome Back ${data.user} 🦄`, {
+                //     toastId: 'success1',
+                // }
+                // );
             }
         }
     };
