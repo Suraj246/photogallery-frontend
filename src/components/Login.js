@@ -31,7 +31,7 @@ function Login() {
         }
         try {
             const { data } = await axios.post(
-                "http://localhost:4000/login",
+                "https://photo-gallerly-backend.onrender.com/login",
                 {
                     ...input,
                 },
