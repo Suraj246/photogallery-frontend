@@ -15,9 +15,11 @@ const Secrete = () => {
     const [deleteItem, setDeleteItem] = useState([])
     const [uploadedFile, setUploadedFile] = useState([])
     // console.log(imgUpload)
+    const [refresh, setRefresh] = useState(false)
+
     useEffect((e) => {
         const fetch = async () => {
-            await axios.get('https://photo-gallerly-backend.onrender.com/api/getimage')
+            await axios.get('http://localhost:4000/api/getimage')
                 .then((res) => {
                     setUploadedFile(res.data.data)
                 })
@@ -27,58 +29,65 @@ const Secrete = () => {
 
 
     const multipleDelete = async () => {
-        await axios.post(`https://photo-gallerly-backend.onrender.com/delete`, deleteItem)
+        await axios.post(`http://localhost:4000/delete`, deleteItem)
             .then((res) => {
                 console.log(res)
             })
             .then((err) => console.log(err))
-        // window.location.reload()
+        setRefresh(!refresh)
     }
 
     const toggleModal = () => {
         setModal(!modal);
     };
 
-    const [cookies, setCookie, removeCookie] = useCookies([]);
-    const verifyUser = async () => {
-        if (!cookies.jwt) {
-            navigate("/signin");
-        } else {
-            const { data } = await axios.post(
-                "https://photo-gallerly-backend.onrender.com/",
-                {},
-                {
-                    withCredentials: true,
-                }
-            );
-            if (!data.status) {
-                removeCookie("jwt");
-                navigate("/signin");
-            }
-            else {
-                setUser(data)
+    // following commented code is practice code nothing to do with main code
 
-                // toast.d(`Welcome Back ${data.user} 🦄`, {
-                //     toastId: 'success1',
-                // }
-                // );
-            }
-        }
-    };
-    useEffect(() => {
-        verifyUser();
-    }, [cookies, navigate, removeCookie]);
+    // const [cookies, setCookie, removeCookie] = useCookies([]);
+
+    // const verifyUser = async () => {
+    //     if (!cookies.jwt) {
+    //         navigate("/signin");
+    //     } else {
+    //         const { data } = await axios.post(
+    //             "http://localhost:4000/",
+    //             {},
+    //             {
+    //                 withCredentials: true,
+    //             }
+    //         );
+    //         if (!data.status) {
+    //             removeCookie("jwt");
+    //             navigate("/signin");
+    //         }
+
+    //         else {
+    //             setUser(data)
+    //         }
+    //     }
+    // };
+    // useEffect(() => {
+    //     verifyUser();
+    // }, [cookies, navigate, removeCookie]);
 
     const logOut = () => {
-        removeCookie("jwt");
+        // removeCookie("jwt");
+        localStorage.removeItem("iduser");
         navigate("/signin");
     };
+
+    useEffect(() => {
+        if (!localStorage.getItem("iduser")) {
+            navigate("/signin")
+        }
+    }, [refresh])
+
     const upload = (e) => {
         setImgUpload(e.target.files[0])
 
     }
     const handlePhotoUpload = (e) => {
-        const url = 'https://photo-gallerly-backend.onrender.com/api/image'
+        const url = 'http://localhost:4000/api/image'
         const formData = new FormData();
         formData.append('image', imgUpload)
         try {

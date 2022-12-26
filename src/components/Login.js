@@ -7,13 +7,12 @@ import { ToastContainer, toast } from "react-toastify";
 function Login() {
     const [cookies] = useCookies([]);
     const navigate = useNavigate();
-    useEffect(() => {
-        if (cookies.jwt) {
-            navigate("/");
-        }
-    }, [cookies, navigate]);
+    // useEffect(() => {
+    //     if (cookies.jwt) {
+    //         navigate("/");
+    //     }
+    // }, [cookies, navigate]);
 
-    // const [values, setValues] = useState({ email: "", password: "" });
     const [input, setInput] = useState({ email: "", password: "" });
     const inputHandler = (e) => {
         const value = e.target.value;
@@ -32,18 +31,20 @@ function Login() {
         }
         try {
             const { data } = await axios.post(
-                "https://photo-gallerly-backend.onrender.com/login",
+                "http://localhost:4000/login",
                 {
                     ...input,
                 },
-                { withCredentials: true }
+                // { withCredentials: true }
             );
+            console.log();
             if (data) {
                 if (data.errors) {
                     const { email, password } = data.errors;
                     if (email) generateError(email);
                     else if (password) generateError(password);
                 } else {
+                    localStorage.setItem("iduser", data.user);
                     navigate("/");
                 }
             }
@@ -51,6 +52,11 @@ function Login() {
             console.log(ex);
         }
     };
+
+    useEffect(() => {
+        localStorage.getItem('iduse')
+    }, [])
+
     return (
         <div className="container-signup">
             <div className="signup-left">
