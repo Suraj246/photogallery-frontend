@@ -278,7 +278,7 @@ input[type="file"] {
     left: 3px;
 }
 
-input[type="checkbox"]:checked:after {
+.image-upload input[type="checkbox"]:checked:after {
     font-weight: 900;
     content: "\f058";
     color: #1554ba;
