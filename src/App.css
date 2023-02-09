@@ -261,13 +261,13 @@ input[type="file"] {
     position: absolute;
 }
 
-input[type="checkbox"] {
+.image-upload input[type="checkbox"] {
     -webkit-appearance: none;
     position: relative;
     width: 100%;
 }
 
-input[type="checkbox"]:after {
+.image-upload input[type="checkbox"]:after {
     position: absolute;
     font-family: "Font Awesome 5 Free";
     font-weight: 600;
