@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useCookies } from 'react-cookie'
+// import { useCookies } from 'react-cookie'
 import axios from 'axios'
 import "./Model/Model.css";
 import Image from './Image'
@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 const Secrete = () => {
     const navigate = useNavigate();
-    const [user, setUser] = useState([])
+    // const [user, setUser] = useState([])
     const [modal, setModal] = useState(false);
     const [imgUpload, setImgUpload] = useState('')
     const [deleteItem, setDeleteItem] = useState([])
@@ -19,6 +19,7 @@ const Secrete = () => {
 
     useEffect((e) => {
         const fetch = async () => {
+            // await axios.get('http://localhost:4000/api/getimage')
             await axios.get('https://photogallery-backend.onrender.com/api/getimage')
                 .then((res) => {
                     setUploadedFile(res.data.data)
@@ -29,6 +30,7 @@ const Secrete = () => {
 
 
     const multipleDelete = async () => {
+        // await axios.post(`http://localhost:4000/delete`, deleteItem)
         await axios.post(`https://photogallery-backend.onrender.com/delete`, deleteItem)
             .then((res) => {
                 console.log(res)
@@ -87,6 +89,7 @@ const Secrete = () => {
 
     }
     const handlePhotoUpload = (e) => {
+        // const url = 'http://localhost:4000/api/image'
         const url = 'https://photogallery-backend.onrender.com/api/image'
         const formData = new FormData();
         formData.append('image', imgUpload)

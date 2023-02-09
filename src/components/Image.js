@@ -20,6 +20,7 @@ const Image = ({ uploadedFile, deleteItem, setDeleteItem, modal }) => {
                     }
                     return (
                         <div key={idx} className="image-upload">
+                            {/* <img src={`http://localhost:4000/uploads/${elem.profile}`} alt="" /> */}
                             <img src={`https://photogallery-backend.onrender.com/uploads/${elem.profile}`} alt="" />
                             <div className="img-info">
                                 <span>{title}</span>
